@@ -13,7 +13,7 @@
               ></v-text-field>
             </div>
             <div class="form-outline">
-              <v-text-field label="Açıklamanız"></v-text-field>
+              <v-textarea label="Açıklamanız"></v-textarea>
             </div>
             <div class="text-end">
               <button class="cta">
