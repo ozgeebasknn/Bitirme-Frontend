@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+.vh{
+    min-height: 100vh;
+}
+
+.bg-nav{
+    background-color: #DDBEAA;
+}
+
+.bg-color{
+    background-color:#5BA199
+}
+.bg-reg{
+    background-color: #DDBEAA;
+}
+.box:hover {
+    box-shadow: 0 0 11px rgba(33,33,33,.2); 
+  }
+
+
+
+.mid{
+    place-content: center;
+  }
+.space{
+    place-content: start space-evenly;
+}
