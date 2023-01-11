@@ -42,12 +42,3 @@ export default {
   },
 };
 </script>
-
-<style>
-.vh {
-  min-height: 100vh;
-}
-.mid {
-  place-content: center;
-}
-</style>
