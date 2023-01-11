@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import Vue from 'vue'
+
 import App from './App.vue'
 import router from './router'
 import store from './store'
@@ -7,8 +7,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../src/style/global.css'
 import '../src/style/__login.css'
 
-import DefaultLayout from './layouts/Default.vue'
-import BlankLayout from './layouts/Blank.vue'
 // import setAuthHeader from './utilty/setAuthHeader'
 
 // if(localStorage.jwt){
@@ -47,12 +45,3 @@ import bootstrap from 'bootstrap/dist/js/bootstrap.js'
 axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token');
 
 createApp(App).use(bootstrap).use(vuetify).use(store).use(router).mount('#app')
-Vue.component('default-layout',DefaultLayout)
-Vue.component('blank-layout',BlankLayout)
-new Vue({
-    el: '#app',
-    router,
-    store,
-    template: '<App/>',
-    components: { App },
-});
