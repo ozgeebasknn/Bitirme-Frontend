@@ -52,9 +52,9 @@
   <section class="py-0 py-xl-5">
     <homebanner></homebanner>
   </section>
-  <section class="py-lg-16">
+  <!-- <section class="py-lg-16">
     <homeCard></homeCard>
-  </section>
+  </section> -->
   <!---->
   <section class="py-lg-15 py-10 bg-light" id="questions">
     <homeAcardion></homeAcardion>

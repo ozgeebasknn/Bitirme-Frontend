@@ -10,6 +10,7 @@ import LayoutDefault from "../layouts/DefauldLayout.vue";
 
 import favCard from "@/components/Card/FavoriCard.vue";
 export default {
+  name:"favoriler",
   components: { favCard,LayoutDefault },
   data: () => ({}),
 };

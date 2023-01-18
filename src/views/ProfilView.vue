@@ -1,69 +1,54 @@
 <template>
-  <navbar-comp></navbar-comp>
-  <div class="h-200 tumSayfa bg-color">
-    <div class="container py-5 h-200">
-      <div class="row d-flex justify-content-center align-items-center h-10">
-        <div class="col-lg-8 col-xl-6">
-          <div class="card rounded-3">
-            <div class="row mid pt-2">
-              <img
-                src="../assets/görseller/loginLogo.png"
-                class="w-25"
-                alt="Sample photo"
-              />
-            </div>
+  <layout-default>
+    <v-card
+        class="mx-auto my-5 rounded-lg shadow"
+        max-width="800"
+        max-height="1200"
+    >
+       <div class="row mid pt-2">
+        <img
+            src="../assets/görseller/loginLogo.png"
+            class="w-25"
+            alt="Sample photo"
+        />
+       </div>
+      <v-container>
+        <v-text-field label="İsim" variant="outlined" clearable v-model="user.first_name "></v-text-field>
+        <v-text-field label="Soyisim" variant="outlined" clearable v-model="user.last_name "></v-text-field>
+        <v-text-field label="Email" variant="outlined" clearable v-model="user.email"></v-text-field>
+        <!-- <v-text-field label="Şifre" variant="outlined" clearable v-model="user.password"></v-text-field> -->
+       
+      </v-container>
 
-            <div class="card-body p-4 p-md-5">
-              <div class="form-floating mb-3">
-                <input
-                  type="text"
-                  class="form-control"
-                  id="floatingInput"
-                  v-model="user.full_name"
-                  required
-                />
-                <label for="floatingInput">İsim</label>
-              </div>
-              <div class="form-floating mb-3">
-                <input
-                  type="text"
-                  class="form-control"
-                  id="floatingInput"
-                  v-model="user.email"
-                  required
-                />
-                <label for="floatingInput">Email</label>
-              </div>
-              <div class="form-floating mb-3">
-                <input
-                  type="text"
-                  class="form-control"
-                  id="floatingInput"
-                  v-model="user.password"
-                  required
-                />
-                <label for="floatingInput">Şifre</label>
-              </div>
+      <v-divider></v-divider>
 
-              <button @click="updateUser()" class="btn btn-success btn-lg mb-1">
-                Güncelle
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+      <v-card-actions>
+        <v-spacer></v-spacer>
+
+        <button class="cta" @click="updateUser()">
+          <span>Güncelle</span>
+          <svg width="13px" height="10px" viewBox="0 0 13 10">
+            <path d="M1,5 L11,5"></path>
+            <polyline points="8 1 12 5 8 9"></polyline>
+          </svg>
+        </button>
+      </v-card-actions>
+    </v-card>
+    <router-link to="/userIlan"> <button >İlanlarım</button></router-link>
+   
+
+</layout-default>
 </template>
 <script>
 import { useRouter } from "vue-router";
-import NavbarComp from "@/components/NavbarComp.vue";
+import LayoutDefault from "../layouts/DefauldLayout.vue";
 import axios from "axios";
 import { reactive } from "vue";
 import { URL } from "../utilty/config";
 export default {
+  name:"profil",
   components: {
-    NavbarComp,
+    LayoutDefault,
   },
   setup() {
     const router = useRouter();
@@ -73,20 +58,29 @@ export default {
     user: reactive({}),
   }),
   created() {
-    axios.get(URL + "users/" + this.$route.params.id).then((response) => {
+    axios .get(URL + "users/" + `${this.$route.params.id}`).then((response) => {
       this.user = response.data;
     });
   },
   methods: {
+  
     updateUser() {
       axios
-        .post(URL + "", {
-          full_name: this.user.full_name,
+        .post(URL + "users/update", {
+          first_name:this.user.first_name,
+          last_name:this.user.last_name,
+          email: this.user.email,
+          password: this.user.password,
         })
         .then((res) => {
           console.log(res);
         });
     },
+    // sifreSifirla(){
+    //   axios.post(URL+"users/change-password" ).then((resp)=>{
+    //     console.log(resp)
+    //   })
+    // }
   },
   // data() {
   //   return {

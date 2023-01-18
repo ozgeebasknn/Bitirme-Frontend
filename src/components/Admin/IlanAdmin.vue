@@ -1,5 +1,5 @@
 <template>
-    <div class="card container mt-5" style="background-color: #0b222e">
+    <div class="card container mt-5 pt-5" style="background-color: #DDBEAA;" >
       <article
         class="postcard dark blue"
         v-for="card in displayedCards"
@@ -30,20 +30,7 @@
             <li class="tag__item">{{ card.kira }}</li>
             <li class="tag__item">{{ card.esyaDurumu }}</li>
            
-            <li class="tag__item">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                class="bi-heart"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"
-                />
-              </svg>
-            </li>
+           
           </ul>
         </div>
       </article>
@@ -106,29 +93,27 @@
   </script>
   
   <style lang="scss" scoped>
-  .bi bi-heart{
-    color: red;
-  }
+
   .postcard {
     flex-wrap: wrap;
     display: flex;
-  
-    box-shadow: 0 4px 21px -12px rgba(0, 0, 0, 0.66);
+    box-shadow: 0 4px 21px -12px #D3E4CD;
     border-radius: 10px;
     margin: 0 0 2rem 0;
     overflow: hidden;
     position: relative;
-    color: #ffffff;
+    color: black;
   
     &.dark {
-      background-color: #18151f;
+      // background-color: #18151f;
+      background-color: white;
     }
     &.light {
-      background-color: #e1e5ea;
+      background-color: white;
     }
   
     .t-dark {
-      color: #18151f;
+      color: white;
     }
   
     a {
@@ -166,7 +151,7 @@
       height: 10px;
       margin: 10px 0;
       border-radius: 5px;
-      background-color: #424242;
+      background-color: white;
       transition: width 0.2s ease;
     }
   
@@ -194,7 +179,7 @@
   
       .tag__item {
         display: inline-block;
-        background: rgba(83, 83, 83, 0.4);
+        background: white;
         border-radius: 3px;
         padding: 2.5px 10px;
         margin: 0 5px 5px 0;
@@ -203,7 +188,7 @@
         transition: background-color 0.3s;
   
         &:hover {
-          background: rgba(83, 83, 83, 0.8);
+          background: white;
         }
       }
     }
@@ -215,7 +200,7 @@
       right: 0;
       bottom: 0;
       left: 0;
-      background-image: linear-gradient(-70deg, #424242, transparent 50%);
+      background-image: linear-gradient(-70deg, white, transparent 50%);
       opacity: 1;
       border-radius: 10px;
     }
@@ -252,7 +237,7 @@
         content: "";
         position: absolute;
         display: block;
-        background: #18151f;
+        background: white;
         top: -20%;
         height: 130%;
         width: 55px;
@@ -298,17 +283,15 @@
   
     .postcard.dark {
       .postcard__text:before {
-        background: #18151f;
+        background: white;
       }
     }
     .postcard.light {
       .postcard__text:before {
-        background: #e1e5ea;
+        background: white;
       }
     }
   }
-  
   /* COLORS */
   </style>
- 
   

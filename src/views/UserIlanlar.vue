@@ -1,68 +1,62 @@
 <template>
-  <div class="card  ">
-    <article
-      class="postcard dark blue mt-4 "
-      v-for="card in displayedCards"
-      :key="card._id"
+     <layout-default>
+        <v-card
+        class="mx-auto my-5 rounded-lg shadow"
+        max-width="800"
+        max-height="1200"
     >
-      <a class="postcard__img_link" href="#">
+       <div class="row mid pt-2">
         <img
-          class="postcard__img"
-          src="../assets/görseller/oda1.jpg"
-          alt="Image Title"
+            src="../assets/görseller/loginLogo.png"
+            class="w-25"
+            alt="Sample photo"
         />
-      </a>
-      <div class="postcard__text">
-        <h1 class="postcard__title blue">
-          <router-link :to="{ name: 'ilanDetay', params: { id: card._id } }">
-            <strong>{{ card.name }} </strong>
-          </router-link>
-        </h1>
-        <div class="postcard__subtitle small">
-          <time datetime="2020-05-25 12:00:00">
-            {{ card.createdAt }}
-          </time>
-        </div>
-        <div class="postcard__bar"></div>
-        <div class="postcard__preview-txt">{{ card.aciklama }}</div>
-        <ul class="postcard__tagbox">
-          <!-- <li class="tag__item">{{ card}}</li> -->
-          <!-- <li class="tag__item">{{ card.esyaDurumu }}</li> -->
-          <button @click="favorilereEkle" class="tag__item button"> Favorilere Ekle
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              class="bi-heart"
-              viewBox="0 0 16 16"
-            >
-              <path
-                d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"
-              />
-            </svg>
-          </button>
-        </ul>
-      </div>
-    </article>
- 
+       </div>
+      <v-container v-for="card in displayedCards" :key="card._id">
+        <v-text-field label="Başlık" variant="outlined" clearable v-model="card.name"></v-text-field>
+        <v-text-field label="Kira" variant="outlined" clearable v-model="card.kira"></v-text-field>
+        <v-text-field label="Isıtma" variant="outlined" clearable v-model="card.isitma"></v-text-field>
+        <v-text-field label="Oda Sayısı" variant="outlined" clearable v-model="card.odaSayisi"></v-text-field>
+        <v-text-field label="Eşya Durumu" variant="outlined" clearable v-model="card.esyaDurumu"></v-text-field>
+        <v-text-field label="Balkon Durumu" variant="outlined" clearable v-model="card.balkonDurumu"></v-text-field>
+        <v-textarea label="Açıklama" variant="outlined" clearable v-model="card.aciklama"></v-textarea>
+       
+      </v-container>
 
-    <div>
+      <v-divider></v-divider>
+
+      <v-card-actions>
+        <v-spacer></v-spacer>
+
+        <button class="cta" @click="ilanGuncelle()">
+          <span>Güncelle</span>
+          <svg width="13px" height="10px" viewBox="0 0 13 10">
+            <path d="M1,5 L11,5"></path>
+            <polyline points="8 1 12 5 8 9"></polyline>
+          </svg>
+        </button>
+      </v-card-actions>
+      <div>
       <button v-for="page in pages" :key="page" @click="currentPage = page">
         {{ page }}
       </button>
     </div>
-  </div>
+    </v-card>
+   
+</layout-default>
 </template>
 
-
-
 <script>
-import { useRouter } from "vue-router";
 import axios from "axios";
+import LayoutDefault from "../layouts/DefauldLayout.vue";
 import { URL } from "../utilty/config";
-export default {
+import { useRouter } from "vue-router";
 
+export default {
+  name: "userIlan",
+  components: {
+    LayoutDefault,
+  },
   data() {
     return {
       currentPage: 1,
@@ -71,35 +65,34 @@ export default {
       favori: [],
     };
   },
-  methods: {
-    favorilereEkle() {
-      axios.get(URL+"favoriler")
-      .then((response) => {
-            this.favori = response.data;
-            console.log(this.favori);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-    },
-    getAds() {
-
-      axios
-        .get(URL + "projects")
-        .then((response) => {
-          this.cards = response.data;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
-
-  },
-  created() {
-    this.getAds();
-  },
   setup() {
     const router = useRouter();
+  },
+  methods: {
+    ilanGuncelle() {
+        axios.patch(URL+"projects/"+`${this.$route.params._id}`,{
+            name:this.cards.name,
+            kira:this.cards.kira,
+            isitma:this.cards.isitma,
+            odaSayisi:this.cards.odaSayisi,
+            esyaDurumu:this.cards.esyaDurumu,
+            balkonDurumu:this.cards.balkonDurumu,
+            aciklama:this.cards.aciklama
+
+        }).then((response)=>{
+            console.log(response)
+           
+          
+
+        });
+      
+    },
+  },
+  created() {
+    axios.get(URL + "users/projects").then((response) => {
+        this.cards = response.data;
+        
+      });
   },
   computed: {
     displayedCards() {
@@ -115,7 +108,6 @@ export default {
   },
 };
 </script>
-
 <style lang="scss" scoped>
 .bi bi-heart{
   color: red;
@@ -320,4 +312,3 @@ export default {
 }
 /* COLORS */
 </style>
-

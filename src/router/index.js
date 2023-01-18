@@ -24,6 +24,12 @@ const routes = [
         component: () => import ('../views/ProfilView.vue')
     },
     {
+        path: '/userIlan',
+        name: 'userIlan',
+
+        component: () => import ('../views/UserIlanlar.vue')
+    },
+    {
         path: '/favoriler',
         name: 'favoriler',
 
@@ -34,6 +40,12 @@ const routes = [
         name: 'ilanDetay',
 
         component: () => import ('../views/İlanDetay.vue')
+    },
+    {
+        path: '/favoriler/:id',
+        name: 'favoriler',
+
+        component: () => import ('../views/FavorilerView.vue')
     },
     {
         path: '/ilanEkle',

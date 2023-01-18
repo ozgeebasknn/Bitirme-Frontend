@@ -8,7 +8,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0 position-absolute top-50 start-50 translate-middle">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 position-absolute top-50 start-50 translate-middle mt-5 pb-5">
         <li class="nav-item p-1">
             <router-link to="/admin/anasayfa" id="button">
                   <button type="button" class="btn ">
@@ -16,13 +16,13 @@
                   </button>
                 </router-link>
         </li>
-        <li class="nav-item p-1">
+        <!-- <li class="nav-item p-1">
             <router-link to="/onaylanmis" id="button">
                   <button type="button" class="btn ">
                     <strong>Onaylanmış İlanlar</strong>
                   </button>
                 </router-link>
-        </li>
+        </li> -->
   
         
       </ul>

@@ -20,6 +20,13 @@
         <v-text-field label="Eşya Durumu" variant="outlined" clearable v-model="this.esyaDurumu"></v-text-field>
         <v-text-field label="Balkon Durumu" variant="outlined" clearable v-model="this.balkonDurumu"></v-text-field>
         <v-textarea label="Açıklama" variant="outlined" clearable v-model="this.aciklama"></v-textarea>
+        <v-file-input
+    label="File input"
+    outlined
+    clearable
+    dense
+    v-model="this.ilan_image"
+  ></v-file-input>
       </v-container>
 
       <v-divider></v-divider>
@@ -60,6 +67,7 @@ export default {
     esyaDurumu: "",
     aciklama: "",
     balkonDurumu: "",
+    ilan_image:""
   }),
   methods: {
     ilanEkle() {
@@ -73,9 +81,20 @@ export default {
           esyaDurumu: this.esyaDurumu,
           aciklama: this.aciklama,
           balkonDurumu: this.balkonDurumu,
+          ilan_image:this.ilan_image
         })
         .then((res) => {
+          
           console.log(res);
+          if (res.status == 201) {
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "İlanınız onaylanması için gönderilmiştir.",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
         })
         .catch((err) => console.log(err));
     },

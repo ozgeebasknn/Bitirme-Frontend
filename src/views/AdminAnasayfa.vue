@@ -1,5 +1,5 @@
 <template>
-    <section class="vh" style="background-color:bisque">
+    <section class="vh" style="background-color:#DDBEAA">
       <admin-navbar></admin-navbar>
       <div class="container h-200">
         

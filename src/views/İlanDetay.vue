@@ -1,129 +1,127 @@
 <template>
-  <section class="vh bg-color">
-    <navbar-comp></navbar-comp>
-
+  <layout-default>
     <div class="container">
-      <div class="container">
-        <div class="row mid">
-          <div class="mt-5 table-responsive mb-5">
-            <table class="table mt-5">
-              <thead>
-                <tr class="table-active">
-                  <th scope="col" class="text-light text-center">Kira</th>
-                  <th scope="col" class="text-light text-center">Isitma</th>
-                  <th scope="col" class="text-light text-center">
-                    Eşya Durumu
-                  </th>
-                  <th scope="col" class="text-light text-center">
-                    Balkon Durumu
-                  </th>
-                  <th scope="col" class="text-light text-center">Açiklama</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="text-center text-light">{{ ilan.kira }}</td>
-                  <td class="text-center text-light">{{ ilan.isitma }}</td>
-                  <td class="text-center text-light">{{ ilan.esyaDurumu }}</td>
-                  <td class="text-center text-light">
-                    {{ ilan.balkonDurumu }}
-                  </td>
-                  <td class="text-center text-light">{{ ilan.aciklama }}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="mid w-75 mb-5">
-            <div
-              id="carouselExampleIndicators"
-              class="carousel slide mt-5"
-              data-bs-ride="true"
-            >
-              <div class="carousel-indicators">
-                <button
-                  type="button"
-                  data-bs-target="#carouselExampleIndicators"
-                  data-bs-slide-to="0"
-                  class="active"
-                  aria-current="true"
-                  aria-label="Slide 1"
-                ></button>
-                <button
-                  type="button"
-                  data-bs-target="#carouselExampleIndicators"
-                  data-bs-slide-to="1"
-                  aria-label="Slide 2"
-                ></button>
-                <button
-                  type="button"
-                  data-bs-target="#carouselExampleIndicators"
-                  data-bs-slide-to="2"
-                  aria-label="Slide 3"
-                ></button>
-              </div>
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img
-                    src="../assets/görseller/oda1.jpg"
-                    class="d-block w-100"
-                    alt="..."
-                  />
-                </div>
-                <div class="carousel-item">
-                  <img
-                    src="../assets/görseller/oda1.jpg"
-                    class="d-block w-100"
-                    alt="..."
-                  />
-                </div>
-                <div class="carousel-item">
-                  <img
-                    src="../assets/görseller/oda1.jpg"
-                    class="d-block w-100"
-                    alt="..."
-                  />
-                </div>
-              </div>
+      <div class="row mid">
+
+        <div class="col-8 mb-5">
+          <div
+            id="carouselExampleIndicators"
+            class="carousel slide mt-5"
+            data-bs-ride="true"
+          >
+            <div class="carousel-indicators">
               <button
-                class="carousel-control-prev"
                 type="button"
                 data-bs-target="#carouselExampleIndicators"
-                data-bs-slide="prev"
-              >
-                <span
-                  class="carousel-control-prev-icon"
-                  aria-hidden="true"
-                ></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
+                data-bs-slide-to="0"
+                class="active"
+                aria-current="true"
+                aria-label="Slide 1"
+              ></button>
               <button
-                class="carousel-control-next"
                 type="button"
                 data-bs-target="#carouselExampleIndicators"
-                data-bs-slide="next"
-              >
-                <span
-                  class="carousel-control-next-icon"
-                  aria-hidden="true"
-                ></span>
-                <span class="visually-hidden">Next</span>
-              </button>
+                data-bs-slide-to="1"
+                aria-label="Slide 2"
+              ></button>
+              <button
+                type="button"
+                data-bs-target="#carouselExampleIndicators"
+                data-bs-slide-to="2"
+                aria-label="Slide 3"
+              ></button>
             </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img
+                  src="../assets/görseller/oda1.jpg"
+                  class="d-block w-100"
+                  alt="..."
+                />
+              </div>
+              <div class="carousel-item">
+                <img
+                  src="../assets/görseller/oda1.jpg"
+                  class="d-block w-100"
+                  alt="..."
+                />
+              </div>
+              <div class="carousel-item">
+                <img
+                  src="../assets/görseller/oda1.jpg"
+                  class="d-block w-100"
+                  alt="..."
+                />
+              </div>
+            </div>
+            <button
+              class="carousel-control-prev"
+              type="button"
+              data-bs-target="#carouselExampleIndicators"
+              data-bs-slide="prev"
+            >
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button
+              class="carousel-control-next"
+              type="button"
+              data-bs-target="#carouselExampleIndicators"
+              data-bs-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">Next</span>
+            </button>
           </div>
+        </div>
+        <div class="mt-5 table-responsive mb-5 col-4">
+          <table class="table mt-5">
+            <thead>
+              <tr class="table-active">
+                <th scope="col" class=" text-center">Kira</th>
+                <th scope="col" class=" text-center">Isitma</th>
+                <th scope="col" class=" text-center">Eşya Durumu</th>
+                <th scope="col" class=" text-center">
+                  Balkon Durumu
+                </th>
+                <th scope="col" class=" text-center">Açıklama</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="text-center ">{{ ilan.kira }}</td>
+                <td class="text-center ">{{ ilan.isitma }}</td>
+                <td class="text-center ">{{ ilan.esyaDurumu }}</td>
+                <td class="text-center ">
+                  {{ ilan.balkonDurumu }}
+                </td>
+                <td class="text-center ">{{ ilan.aciklama }}</td>
+              </tr>
+              
+            </tbody>
+            
+          </table>
+          
         </div>
       </div>
     </div>
-  </section>
+  </layout-default>
 </template>
 <script>
-import NavbarComp from "@/components/NavbarComp.vue";
+import LayoutDefault from "../layouts/DefauldLayout.vue";
 import { useRouter } from "vue-router";
 import axios from "axios";
 import { onMounted, reactive, ref } from "vue";
 import { URL } from "../utilty/config";
 export default {
   components: {
-    NavbarComp,
+    LayoutDefault,
   },
   setup() {
     const router = useRouter();

@@ -17,7 +17,7 @@
                 <div class="card-body p-4 p-lg-5 text-black">
                   <div>
                     <div class="h-25">
-                      <span class="h1 fw-bold mb-0">ROOM MATE</span>
+                      <span class="h1 fw-bold mb-0">ROOMMATE</span>
                     </div>
 
                     <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px">
@@ -34,11 +34,11 @@
                     </div>
                   
                     <div class="form-outline mb-4">
-                      <v-text-field v-model="this.email" label="Email"></v-text-field>
+                      <v-text-field v-model="this.email" label="Email" ></v-text-field>
                     </div>
 
                     <div class="form-outline mb-4">
-                      <v-text-field v-model="this.password" label="Şifre"></v-text-field>
+                      <v-text-field v-model="this.password" label="Şifre" ></v-text-field>
                     </div>
 
                     <div class="pt-1 mb-4 align-content-end">
