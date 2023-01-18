@@ -70,7 +70,7 @@ export default {
   },
   methods: {
     ilanGuncelle() {
-        axios.patch(URL+"projects/"+`${this.$route.params._id}`,{
+        axios.patch(URL + "projects/" + `${this.$route.params.id}`,{
             name:this.cards.name,
             kira:this.cards.kira,
             isitma:this.cards.isitma,
@@ -80,7 +80,8 @@ export default {
             aciklama:this.cards.aciklama
 
         }).then((response)=>{
-            console.log(response)
+          this.cards=response.data
+            console.log(this.cards)
            
           
 
