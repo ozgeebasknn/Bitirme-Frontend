@@ -9,11 +9,12 @@
           <div class="py-2">
             <div class="form-outline">
               <v-text-field
+                variant="outlined"
                 label="Mail Adresiniz"
               ></v-text-field>
             </div>
-            <div class="form-outline">
-              <v-textarea label="Açıklamanız"></v-textarea>
+            <div class="form-outline mt-2">
+              <v-textarea label="Açıklamanız" variant="outlined"  ></v-textarea>
             </div>
             <div class="text-end">
               <button class="cta">
