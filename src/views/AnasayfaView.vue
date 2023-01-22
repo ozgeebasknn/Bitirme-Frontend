@@ -40,5 +40,15 @@ export default {
       itemsPerPage: 10,
     };
   },
+  mounted(){
+    axios
+        .get(URL + "projects")
+        .then((response) => {
+          this.user = response.data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+  }
 };
 </script>

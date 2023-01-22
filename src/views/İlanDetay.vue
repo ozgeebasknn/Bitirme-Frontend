@@ -137,7 +137,7 @@ export default {
     // },
     getAds() {
       axios
-        .get(URL + "projects/" + `${this.$route.params.id}`)
+        .get(URL + "projects/"+`${this.$route.params.id}`)
         .then((response) => {
           this.ilan = response.data;
           console.log(this.ilan);

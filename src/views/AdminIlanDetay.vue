@@ -105,6 +105,7 @@
           </table>
 
           <button @click="onayla" class="btn-rounded">Onayla</button>
+          <button @click="sil" class="btn-rounded">Sil</button>
         </div>
       </div>
     </div>
@@ -164,6 +165,16 @@ export default {
           console.log(error);
         });
     },
+
+    sil(){
+      axios.delete(URL+"admin/"+`${this.$route.params.id}`).then((res)=>{
+        if (res.status == 200) {
+            console.log("silinmiştir")
+          }
+
+      })
+      
+    }
   },
   mounted() {
     this.getAds();

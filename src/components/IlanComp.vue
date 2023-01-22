@@ -28,7 +28,7 @@
         <ul class="postcard__tagbox">
           <!-- <li class="tag__item">{{ card}}</li> -->
           <!-- <li class="tag__item">{{ card.esyaDurumu }}</li> -->
-          <button @click="favorilereEkle" class="tag__item button"> Favorilere Ekle
+          <button @click="favorilereEkle" class="tag__item button" id="favButon"> Favorilere Ekle
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -72,16 +72,7 @@ export default {
     };
   },
   methods: {
-    favorilereEkle() {
-      axios.get(URL+"favoriler")
-      .then((response) => {
-            this.favori = response.data;
-            console.log(this.favori);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-    },
+ 
     getAds() {
 
       axios
@@ -92,6 +83,16 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+    },
+    favorilereEkle() {
+      axios.post(URL+"favoriler")
+      .then((response) => {
+            this.favori = response.data;
+            console.log(this.favori);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
     },
 
   },
@@ -117,8 +118,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.bi bi-heart{
-  color: red;
+
+#favButon{
+  background-color:rgb(41, 40, 40);
+  color: white;
+}
+
+
+#favButon:hover{
+  background-color: rgb(133, 7, 7);
+  color: white;
 }
 .postcard {
   flex-wrap: wrap;

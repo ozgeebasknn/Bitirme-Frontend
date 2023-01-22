@@ -12,7 +12,7 @@
             alt="Sample photo"
         />
        </div>
-      <v-container v-for="card in displayedCards" :key="card._id">
+      <v-container v-for="card in card" :key="card._id">
         <v-text-field label="Başlık" variant="outlined" clearable v-model="card.name"></v-text-field>
         <v-text-field label="Kira" variant="outlined" clearable v-model="card.kira"></v-text-field>
         <v-text-field label="Isıtma" variant="outlined" clearable v-model="card.isitma"></v-text-field>
@@ -37,9 +37,7 @@
         </button>
       </v-card-actions>
       <div>
-      <button v-for="page in pages" :key="page" @click="currentPage = page">
-        {{ page }}
-      </button>
+      
     </div>
     </v-card>
    
@@ -51,7 +49,7 @@ import axios from "axios";
 import LayoutDefault from "../layouts/DefauldLayout.vue";
 import { URL } from "../utilty/config";
 import { useRouter } from "vue-router";
-
+import { reactive } from "vue";
 export default {
   name: "userIlan",
   components: {
@@ -59,10 +57,10 @@ export default {
   },
   data() {
     return {
-      currentPage: 1,
-      cardsPerPage: 5,
-      cards: [],
+      // card: reactive({}),
+      card: [],
       favori: [],
+
     };
   },
   setup() {
@@ -70,18 +68,20 @@ export default {
   },
   methods: {
     ilanGuncelle() {
-        axios.patch(URL + "projects/" + `${this.$route.params.id}`,{
-            name:this.cards.name,
-            kira:this.cards.kira,
-            isitma:this.cards.isitma,
-            odaSayisi:this.cards.odaSayisi,
-            esyaDurumu:this.cards.esyaDurumu,
-            balkonDurumu:this.cards.balkonDurumu,
-            aciklama:this.cards.aciklama
+        axios.patch(URL + "projects/" + this.card[0]._id,{
+            name:this.card[0].name,
+            kira:this.card[0].kira,
+            isitma:this.card[0].isitma,
+            odaSayisi:this.card[0].odaSayisi,
+            esyaDurumu:this.card[0].esyaDurumu,
+            balkonDurumu:this.card[0].balkonDurumu,
+            aciklama:this.card[0].aciklama
 
         }).then((response)=>{
-          this.cards=response.data
-            console.log(this.cards)
+          this.card=response.data
+            console.log(this.card)
+           
+
            
           
 
@@ -91,22 +91,11 @@ export default {
   },
   created() {
     axios.get(URL + "users/projects").then((response) => {
-        this.cards = response.data;
-        
+        this.card = response.data;
+        console.log(this.card[0]._id)
       });
   },
-  computed: {
-    displayedCards() {
-      const start = (this.currentPage - 1) * this.cardsPerPage;
-      const end = start + this.cardsPerPage;
-      return this.cards.slice(start, end);
-    },
-    pages() {
-      return Array(Math.ceil(this.cards.length / this.cardsPerPage))
-        .fill()
-        .map((_, i) => i + 1);
-    },
-  },
+ 
 };
 </script>
 <style lang="scss" scoped>

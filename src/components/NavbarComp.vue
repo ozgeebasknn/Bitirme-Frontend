@@ -86,9 +86,10 @@ export default {
     },
     getAds() {
       axios
-        .get(URL + "projects")
+        .get(URL + "userDetail")
         .then((response) => {
           this.user = response.data;
+          cosnole.log(this.user)
         })
         .catch((error) => {
           console.log(error);
@@ -96,6 +97,7 @@ export default {
     },
   },
   mounted() {
+    console.log( this.user[0].user_id._id)
     this.getAds();
   },
   // created() {
